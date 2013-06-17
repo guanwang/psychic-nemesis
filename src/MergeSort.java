@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 /**
  * -----------------------------------------------------------------------
- *     Copyright (C) 2013 Ericsson Limited.  All rights reserved.
+ *     Copyright (C) 2013   All rights reserved.
  * -----------------------------------------------------------------------
  */
 
