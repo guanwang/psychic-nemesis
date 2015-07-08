@@ -26,14 +26,14 @@ public class CountingSort {
         for (int i = 0; i < array.length; i++) {
             c[array[i]]++;
         }
-
-        for (int j = 1; j < c.length; j++) {
-            c[j] += c[j - 1];
-        }
-
-        for (int k = array.length - 1; k >= 0; k--) {
-            b[c[array[k]] - 1] = array[k];
-            c[array[k]]--;
+  
+        int z = 0;
+        for (int k = 0; k < c.length; k++) {
+            int y = c[k];
+            while(y>0) {
+                b[z++] = k;
+                y--;       
+            }
         }
 
         return b;
