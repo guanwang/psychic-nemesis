@@ -32,22 +32,31 @@ public class QuickSort {
         final int pivot = array[left];
         int i = left;
         int j = right;
-        while (i < j) {
-            while (array[i] < pivot) {
-                i++;
-            }
-            while (array[j] > pivot) {
+        while (i != j) {
+
+            while (array[j] > pivot && i < j) {
                 j--;
             }
+
             if (i < j) {
-                if (array[i] == array[j]) {
-                    i++;
-                    continue;
-                }
-                swap(array, i, j);
+                array[i++] = array[j];
+            }
+
+            while (array[i] < pivot && i < j) {
+                i++;
+            }
+
+            if (i < j) {
+                /*    if (array[i] == array[j]) {
+                        i++;
+                        continue;
+                    }*/
+                //swap(array, i, j);
+                array[j--] = array[i];
             }
 
         }
+        array[i] = pivot;
         return i;
     }
 
