@@ -59,11 +59,4 @@ public class QuickSort {
         array[i] = pivot;
         return i;
     }
-
-    private void swap(final int[] array, final int left, final int right) {
-        final int tmp = array[left];
-        array[left] = array[right];
-        array[right] = tmp;
-    }
-
 }
