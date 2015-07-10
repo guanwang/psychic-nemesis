@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * -----------------------------------------------------------------------
  *     Copyright (C) 2013   All rights reserved.
@@ -27,34 +25,39 @@ public class MergeSort {
     }
 
     public void mergeSort(final int[] array, final int left, final int right) {
-        if (left >= right) {
+        if (left + 1 >= right) {
             return;
         }
-        mergeSort(array, left, left + (right - left) / 2);
-        mergeSort(array, left + (right - left) / 2 + 1, right);
-        merge(array, left, left + (right - left) / 2, right);
+        mergeSort(array, left, (right + left) / 2);
+        mergeSort(array, (right + left) / 2, right);
+        merge(array, left, (right + left) / 2, right);
 
     }
 
     private void merge(final int[] array, final int left, final int middle, final int right) {
 
-        final int[] leftArray = Arrays.copyOfRange(array, left, middle + 1);
-        final int[] rightArray = Arrays.copyOfRange(array, middle + 1, right + 1);
-        int i = 0, j = 0;
-        int k = left;
-        while (i <= leftArray.length - 1 && j <= rightArray.length - 1) {
-            if (leftArray[i] <= rightArray[j]) {
-                array[k++] = leftArray[i++];
+        // final int[] leftArray = Arrays.copyOfRange(array, left, middle + 1);
+        // final int[] rightArray = Arrays.copyOfRange(array, middle + 1, right + 1);
+        final int[] tempArray = new int[right - left];
+        int i = left, j = middle;
+        int k = 0;
+        while (i < middle && j < right) {
+            if (array[i] <= array[j]) {
+                tempArray[k++] = array[i++];
             } else {
-                array[k++] = rightArray[j++];
+                tempArray[k++] = array[j++];
             }
         }
 
-        while (i <= leftArray.length - 1) {
-            array[k++] = leftArray[i++];
+        while (i < middle) {
+            tempArray[k++] = array[i++];
         }
-        while (j <= rightArray.length - 1) {
-            array[k++] = rightArray[j++];
+        while (j < right) {
+            tempArray[k++] = array[j++];
+        }
+
+        for (int z = left; z < right; z++) {
+            array[z] = tempArray[z - left];
         }
 
     }
