@@ -21,11 +21,11 @@ public class MergeSort {
     }
 
     public void sort(final int[] array) {
-        mergeSort(array, 0, array.length - 1);
+        mergeSort(array, 0, array.length);
     }
 
     public void mergeSort(final int[] array, final int left, final int right) {
-        if (left + 1 >= right) {
+        if (left >= right - 1) {
             return;
         }
         mergeSort(array, left, (right + left) / 2);
@@ -42,7 +42,7 @@ public class MergeSort {
         int i = left, j = middle;
         int k = 0;
         while (i < middle && j < right) {
-            if (array[i] <= array[j]) {
+            if (array[i] < array[j]) {
                 tempArray[k++] = array[i++];
             } else {
                 tempArray[k++] = array[j++];
